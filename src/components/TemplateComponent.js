@@ -2,7 +2,10 @@
 
 import React from 'react';
 
+import { withRouter } from 'react-router';
+
 import SiteNavigation from './SiteNavigationComponent';
+import SiteFooter from './SiteFooterComponent';
 import i18n from '../i18n';
 
 require('es6-promise/auto');
@@ -10,6 +13,52 @@ require('es6-promise/auto');
 var airbrakeJs = require('airbrake-js');
 
 class TemplateComponent extends React.Component {
+  handleSearch(searchText, searchLocationText, searchCoords) {
+    let state = {
+      'searchText': null,
+      'searchLocationText': null,
+      'searchCoords': null
+    };
+
+    if (searchText) {
+      state.searchText = searchText;
+    }
+    if (searchLocationText) {
+      state.searchLocationText = searchLocationText;
+    }
+    if (searchCoords) {
+      state.searchCoords = searchCoords[0] + ',' + searchCoords[1];
+    }
+
+    if (!searchText && !searchLocationText && !searchCoords) {
+      // There is no form data entered but they clicked search anyway.
+      // Let's search for empty string.
+      state.searchText = ' ';
+    }
+
+    this.setState(state, () => {
+      this.finishSearch();
+    });
+  }
+
+  finishSearch() {
+    let query = {};
+    if (this.state.searchText) {
+      query.q = this.state.searchText;
+    }
+    if (this.state.searchCoords) {
+      query.at = this.state.searchCoords;
+    }
+    if (this.state.searchLocationText) {
+      query.near = this.state.searchLocationText;
+    }
+
+    this.props.router.push({
+      'pathname': '/',
+      'query': query
+    });
+  }
+
   getChildContext() {
     return {
       'config': this.state.config,
@@ -127,12 +176,15 @@ class TemplateComponent extends React.Component {
     return (
       <div className='template-component'>
         {/* Every page will have the navigation component */}
-        <SiteNavigation />
+        <SiteNavigation onSearch={this.handleSearch.bind(this)} />
 
         {/* The router will decide what to render here based on the URL we're at */}
         <main className='main'>
           {childWithProps}
         </main>
+
+        {/* Every page will have the footer component */}
+        <SiteFooter />
       </div>
     );
   }
@@ -145,4 +197,4 @@ TemplateComponent.childContextTypes = {
   'logger': React.PropTypes.object
 };
 
-export default TemplateComponent;
+export default withRouter(TemplateComponent);

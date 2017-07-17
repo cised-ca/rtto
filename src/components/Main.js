@@ -11,6 +11,9 @@ import Template from './TemplateComponent.js';
 import Directory from './DirectoryComponent.js';
 import ApplicationForm from './ApplicationFormComponent.js';
 import PrivacyPolicy from './PrivacyPolicyComponent.js';
+import WhatPage from './WhatPageComponent.js';
+import NearbyPage from './NearbyPageComponent.js';
+import GetInvolvedPage from './GetInvolvedPageComponent.js';
 
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-97087495-1');
@@ -40,6 +43,9 @@ class AppComponent extends React.Component {
           <Route name="directory" path='/directory' component={Directory} />
           <Route name='application-form' path='/apply' component={ApplicationForm} />
           <Route name='privacy-policy' path='/privacy' component={PrivacyPolicy} />
+          <Route name='content-page' path='/what' component={WhatPage} />
+          <Route name='content-page' path='/nearby' component={NearbyPage} />
+          <Route name='content-page' path='/get-involved' component={GetInvolvedPage} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

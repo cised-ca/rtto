@@ -1,16 +1,17 @@
+/* Results */
+
 .search-results {
-  list-style-type: none;
-  margin-top: 20px;
-  text-align: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .search-result {
-  border-bottom: 1px solid #ddd;
-  margin-top: 25px;
-  padding-bottom: 15px;
+    border-bottom: 1px solid $primary-color-dark;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .search-result:last-child {
-  border: 0;
+    border: 0;
 }
-

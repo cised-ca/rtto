@@ -119,11 +119,17 @@ class SearchResultsComponent extends React.Component {
       results = component.state.searchResults,
       enterprises = [],
       pagination = null,
-      initial_page;
+      initial_page,
+      page_title = null,
+      map = [];
 
     // We haven't received results from the backend yet
     if (!results) {
-      return (<Loading />);
+      return (
+        <div className='searchresults-component container'>
+          <Loading />
+        </div>
+      );
     }
 
     initial_page = this.state.searchResults.page - 1;
@@ -138,13 +144,13 @@ class SearchResultsComponent extends React.Component {
       );
     } else {
       if (this.state.searchLocationText) {
-        jsx.push(
+        map.push(
           <p key='results near label'>
             {t('searchResults:resultsNear')} "{this.state.searchLocationText}":
           </p>
         );
       }
-      jsx.push(<SearchResultsMap key='mapComponent'
+      map.push(<SearchResultsMap key='mapComponent'
                 searchCoords={component.state.searchCoords}
                 enterprises={enterprises}/>);
     }
@@ -174,8 +180,16 @@ class SearchResultsComponent extends React.Component {
       );
     }
 
+    if (this.props.searchText.trim()) {
+      page_title = <h2>Search Results for: "{this.props.searchText}"</h2>;
+    }
+
     return (
-      <div className='searchresults-component'>
+      <div className='searchresults-component container'>
+        {page_title}
+
+        {map}
+
         <ol key='search-results' className='search-results fade-in'>
           {jsx}
         </ol>

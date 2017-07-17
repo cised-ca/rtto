@@ -9,9 +9,11 @@ class DirectoryComponent extends React.Component {
   render() {
     return (
       <div className="directory-component page">
-        <Back />
+        <div className="container">
+          <Back />
 
-        <SearchResults searchText="" />
+          <SearchResults searchText="" />
+        </div>
       </div>
     );
   }

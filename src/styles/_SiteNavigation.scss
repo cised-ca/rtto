@@ -11,7 +11,6 @@
 .nav__link {
   background-color: $primary-color;
   display: inline-block;
-  font-family: "helvetica-black";
   font-weight: 400;
   margin-right: 10px;
   padding: 13px 8px 8px;
@@ -28,3 +27,7 @@
   color: #fff;
 }
 
+.site__nav .query {
+    border-radius: 0;
+    margin-right: 10px;
+}

@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  line-height: 1.42;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: $primary-color;
+}
+
+a:hover {
+  color: $primary-color-dark;
+  text-decoration: underline;
+}
+
+/* Site */
+.site__content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.site__nav {
+    background: #ff5c3e;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.page {
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.tint {
+    background: rgba(0,0,0,0.3);
+    margin-top: 190px; /* TMP */
+    padding: 40px 20px;
+}
+
+/* TMP */
+.search-location-field {
+    display: none;
+}
+
+/* TMP */
+.navbar-toggle .icon-bar {
+    border: 1px solid #fff;
+}
+
+.navbar-brand,
+.navbar-brand:hover,
+.navbar-brand:focus,
+.site__nav li > a,
+.site__nav li > a:hover,
+.site__nav li > a:focus {
+    background-color: #ff5c3e;
+    color: #fff;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus,
+.site__nav li > a:hover,
+.site__nav li > a:focus {
+    text-decoration: underline;
+}
+
+.site__footer {
+    background: $secondary-color;
+    border-bottom: 40px solid $primary-color;
+    color: #fff;
+    margin-top: 60px;
+    padding: 20px 10px;
+}
+
+/**
+ * Mobile (smaller than iPad)
+ */
+@include tablet {
+  .tint {
+    margin-top: 20px;
+  }
+
+  .page {
+    border-radius: 0;
+    margin: 0 20px;
+    padding-top: 60px;
+    width: auto;
+  }
+}

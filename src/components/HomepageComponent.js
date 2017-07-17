@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import SearchForm from './SearchFormComponent.js';
 import SearchResults from './SearchResultsComponent.js';
@@ -94,11 +93,18 @@ class HomepageComponent extends React.Component {
    * check if we still have a search query in the URL. If not, show the intro.
    */
   componentWillReceiveProps(nextProps) {
+    console.log('props');
+    console.log(this.props);
+    console.log(nextProps);
     if (this.props.location.search && !nextProps.location.search) {
       this.setState({
         'searchText': null,
         'searchLocationText': null,
         'searchCoords': null
+      });
+    } else if (nextProps.searchText) {
+      this.setState({
+        'searchText': nextProps.searchText
       });
     }
   }
@@ -134,16 +140,92 @@ class HomepageComponent extends React.Component {
       apply = null;
 
     const { t } = this.props;
-
+console.log(this.state);
     if (this.state.searchText === null && this.state.searchLocationText === null) {
       intro = (
-        <div className='intro js-intro'>
-          <h1 className='title'>{t('homepage:title')}</h1>
+          <div>
+            <div className="splash">
+              <div className="row">
+                <div className="col-md-3"></div>
+                <div className="col-md-6">
+                  <div className="tint">
+                    <h1 className="splash__title">Rise to the Occasion</h1>
 
-          <p className='tagline'>
-            {t('homepage:tagline')}
-          </p>
-        </div>
+                    <SearchForm onSearch={this.handleSearch.bind(this)} searchText={this.state.searchText} />
+                  </div>
+                </div>
+                <div className="col-md-3"></div>
+              </div>
+            </div>
+
+            <div className="highlight">
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-4">
+                    <div className="highlight__title">
+                      <span className="fa fa-question-circle-o fa-4x" aria-hidden="true"></span>
+
+                      <h2>What is a social enterprise?</h2>
+                    </div>
+
+                    <div className="highligh__content">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar
+                        leo ligula, in sagittis felis rhoncus et. Aliquam erat volutpat. In pharetra
+                        sit amet quam id maximus. Suspendisse vel porta nisi.
+                      </p>
+
+                      <p className="highlight__more">
+                        <Link to="/what">Read more...</Link>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div className="highlight__title">
+                      <span className="fa fa-map-marker fa-4x" aria-hidden="true"></span>
+
+                      <h2>Find nearby social enterprises</h2>
+                    </div>
+
+                    <div className="highligh__content">
+                      <p>
+                        Ut neque ipsum,
+                        interdum ut sapien commodo, feugiat facilisis augue. Nam augue odio, eleifend
+                        sed est eu, accumsan suscipit tortor. Praesent convallis ut velit in vehicula.
+                        Nunc enim odio, pulvinar id turpis ac, condimentum feugiat purus. Donec nisl massa,
+                        consequat sed gravida et, vestibulum ac dui.
+                      </p>
+
+                      <p className="highlight__more">
+                        <Link to="/nearby" title="Find nearby social enterprises">Read more...</Link>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div className="highlight__title">
+                      <span className="fa fa-user-circle-o fa-4x" aria-hidden="true"></span>
+
+                      <h2>Get involved</h2>
+                    </div>
+
+                    <div className="highligh__content">
+                      <p>
+                        In ac auctor tortor. Nunc convallis nisi in ex venenatis, sit amet suscipit nunc
+                        dignissim. Suspendisse in faucibus dui, vitae eleifend leo. Mauris efficitur odio
+                        lorem, at sodales ipsum porta at. Mauris hendrerit sed massa non consectetur.
+                      </p>
+
+                      <p className="highlight__more">
+                        <Link to="/get-involved" title="Get involved">Read more...</Link>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
       );
 
       apply = (
@@ -195,24 +277,9 @@ class HomepageComponent extends React.Component {
       );
     }
 
-
     return (
       <div className='homepage-component'>
-        <ReactCSSTransitionGroup transitionName={{leave: 'slide-up'}}
-          transitionEnter={false} transitionLeaveTimeout={2000}>
-          {intro}
-        </ReactCSSTransitionGroup>
-
-        <SearchForm onSearch={this.handleSearch.bind(this)} searchText={this.state.searchText}
-          searchLocation={this.state.searchLocationText} />
-
-        {apply}
-
-        {rhok}
-
-        {powered_by}
-
-        {privacy_policy}
+        {intro}
 
         {searchResults}
       </div>

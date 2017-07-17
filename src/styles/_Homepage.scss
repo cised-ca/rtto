@@ -1,92 +1,37 @@
-.privacy-policy {
-  @extend .chat;
-  font-size: 11px;
-  a {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+/* Splash */
+
+.splash {
+    background: no-repeat url("../images/splash.jpg");
+    background-size: cover;
+    height: 800px;
+    padding: 30px 15px;
+    text-align: center;
 }
 
-.rhok {
-  color: #fff;
-  font-size: 13px;
-  margin: 0;
-  padding-top: 16px;
-  text-align: center;
+.splash__title {
+    color: #fff;
+    font-weight: bold;
+    margin-top: 0;
 }
 
-.powered_by {
-  color: #fff;
-  font-size: 13px;
-  margin-top: 0;
-  padding-top: 0;
-  text-align: center;
+/* Highlight */
+
+.highlight {
+    background: #efefef;
+    padding: 5px;
 }
 
-.chat,
-.apply,
-.title,
-.tagline {
-  color: #fff;
+.highlight__title {
+    margin-top: 15px;
+    text-align: center;
 }
 
-.apply {
-  padding-top: 16px;
-  text-align: center;
+.highlight__more {
+    text-align: right;
 }
 
-.title {
-  font-size: 60px;
-  font-weight: 400;
-  margin: 0 10px;
-  padding-top: 150px;
-  text-transform: uppercase;
-}
-
-.tagline {
-  font-size: 16px;
-  margin: 15px 0;
-}
-
-.homepage-component > span {
-  display: block;
-  min-height: 60px;
-}
-
-.intro {
-  max-height: 500px; // FIXME: Magic number
-  text-align: center;
-
-  .title {
-    font-family: "helvetica-black";
-  }
-}
-
-.intro.slide-up {
-  padding-top: 82px;
-  transition: padding-top 2s;
-}
-
-.intro.collapsed {
-  max-height: 0;
-  overflow: hidden;
-}
-
-.chat {
-  padding-top: 16px;
-  text-align: center;
-}
-
-/**
- * Mobile (smaller than iPad)
- */
 @include tablet {
-  .title {
-    font-size: 32px;
-    padding-top: 30px;
-  }
-
-  .tagline {
-    font-size: 28px;
-  }
+    .splash {
+        height: auto;
+    }
 }

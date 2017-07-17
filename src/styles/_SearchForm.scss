@@ -1,14 +1,27 @@
 .search-form {
-  margin: 60px auto 0;
+  margin: 30px auto 0;
   text-align: center;
-  width: 50%;
 
   .button {
-    font-family: "helvetica-black";
     font-weight: 400;
     min-width: 115px;
     text-transform: uppercase;
   }
+}
+
+.search-form__query {
+    font-size: 25px;
+    display: block;
+    margin-bottom: 15px;
+    padding: 15px;
+    width: 100%;
+}
+
+.search-form__button,
+a.search-form__button:link,
+a.search-form__button:visited {
+    border-radius: 0;
+    color: #000;
 }
 
 .button--search {
