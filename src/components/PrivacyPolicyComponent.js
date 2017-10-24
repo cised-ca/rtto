@@ -11,7 +11,7 @@ class PrivacyPolicyComponent extends React.Component {
     const { t } = this.props;
 
     return (
-      <div className="privacypolicy-component page">
+      <div className="privacypolicy-component page container">
         <Back />
 
         <h1>{t('privacyPolicy:title')}</h1>

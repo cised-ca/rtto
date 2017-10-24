@@ -87,7 +87,7 @@ class TemplateComponent extends React.Component {
    *
    * @return A promise
    */
-  get_config() {
+  getConfig() {
     return fetch('/config.json')
       .then(function(response) {
         if (!response.ok) {
@@ -105,7 +105,7 @@ class TemplateComponent extends React.Component {
   /**
    * Send errors to a logging system
    */
-  setup_error_logger(config) {
+  setupErrorLogger(config) {
     var logger;
 
     logger = new airbrakeJs({
@@ -127,14 +127,14 @@ class TemplateComponent extends React.Component {
     var app = this;
 
     app
-      .get_config()
+      .getConfig()
       .then(function(config) {
         let logger = app.state.logger;
 
         // If we have a logger in the configs, set it up
         // otherwise it will default to the browser's console.error()
         if (config.logger) {
-          logger = app.setup_error_logger(config);
+          logger = app.setupErrorLogger(config);
         }
 
         let currentLocale = config.defaultLocale || 'en';

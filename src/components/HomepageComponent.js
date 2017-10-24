@@ -93,9 +93,6 @@ class HomepageComponent extends React.Component {
    * check if we still have a search query in the URL. If not, show the intro.
    */
   componentWillReceiveProps(nextProps) {
-    console.log('props');
-    console.log(this.props);
-    console.log(nextProps);
     if (this.props.location.search && !nextProps.location.search) {
       this.setState({
         'searchText': null,
@@ -133,14 +130,10 @@ class HomepageComponent extends React.Component {
 
   render() {
     var intro = null,
-      privacy_policy = null,
-      rhok = null,
-      searchResults = null,
-      powered_by = null,
-      apply = null;
+      searchResults = null;
 
     const { t } = this.props;
-console.log(this.state);
+
     if (this.state.searchText === null && this.state.searchLocationText === null) {
       intro = (
           <div>
@@ -226,39 +219,6 @@ console.log(this.state);
               </div>
             </div>
           </div>
-      );
-
-      apply = (
-        <p className="apply">
-          {t('homepage:apply')}&nbsp;
-          <Link to="/apply">{t('homepage:applyLinkText')}</Link>.
-        </p>
-      );
-
-      rhok = (
-        <p className="rhok">
-          {t('homepage:created')}&nbsp;
-
-          <a href='https://rhok.ca/projects/ottawa-social-enterprise-marketplace'>
-            {t('homepage:rhok')}
-          </a>
-        </p>
-      );
-
-      powered_by = (
-        <p className="powered_by">
-          {t('homepage:poweredBy')}&nbsp;
-          <a href="http://csedottawa.ca/">CSED</a> |&nbsp;
-          <a href="http://csedottawa.ca/">{t('homepage:connectLinkText')}</a> {t('homepage:connect')}
-        </p>
-      );
-
-      privacy_policy = (
-        <p className='privacy-policy'>
-          <Link to='/privacy'>{t('homepage:privacyPolicy')}</Link>
-          | {t('homepage:locationData')}
-          <Link to='http://www.geonames.org/'>geonames.org</Link>
-        </p>
       );
     } else if (this.shouldShowSearchResults()) {
       searchResults = (

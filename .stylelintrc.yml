@@ -2,7 +2,6 @@ extends: stylelint-config-standard
 
 rules:
   block-closing-brace-newline-before: always
-  block-no-single-line: true
   block-opening-brace-newline-after: always
   declaration-block-properties-order: alphabetical
   declaration-block-semicolon-newline-after: always
@@ -16,7 +15,7 @@ rules:
   no-duplicate-selectors: true
   property-no-unknown: true
   property-no-vendor-prefix: true
-  selector-no-id: true
+  selector-max-id: 0
   string-quotes: double
   value-keyword-case: lower
 

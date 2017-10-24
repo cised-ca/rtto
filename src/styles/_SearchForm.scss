@@ -10,18 +10,18 @@
 }
 
 .search-form__query {
-    font-size: 25px;
-    display: block;
-    margin-bottom: 15px;
-    padding: 15px;
-    width: 100%;
+  display: block;
+  font-size: 25px;
+  margin-bottom: 15px;
+  padding: 15px;
+  width: 100%;
 }
 
 .search-form__button,
 a.search-form__button:link,
 a.search-form__button:visited {
-    border-radius: 0;
-    color: #000;
+  border-radius: 0;
+  color: #000;
 }
 
 .button--search {
@@ -87,3 +87,4 @@ a.search-form__button:visited {
     }
   }
 }
+

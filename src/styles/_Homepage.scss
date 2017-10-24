@@ -1,37 +1,38 @@
 /* Splash */
 
 .splash {
-    background: no-repeat url("../images/splash.jpg");
-    background-size: cover;
-    height: 800px;
-    padding: 30px 15px;
-    text-align: center;
+  background: no-repeat url("../images/splash.jpg");
+  background-size: cover;
+  height: 800px;
+  padding: 30px 15px;
+  text-align: center;
 }
 
 .splash__title {
-    color: #fff;
-    font-weight: bold;
-    margin-top: 0;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 0;
 }
 
 /* Highlight */
 
 .highlight {
-    background: #efefef;
-    padding: 5px;
+  background: #efefef;
+  padding: 5px;
 }
 
 .highlight__title {
-    margin-top: 15px;
-    text-align: center;
+  margin-top: 15px;
+  text-align: center;
 }
 
 .highlight__more {
-    text-align: right;
+  text-align: right;
 }
 
 @include tablet {
-    .splash {
-        height: auto;
-    }
+  .splash {
+    height: auto;
+  }
 }
+

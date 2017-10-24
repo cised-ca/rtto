@@ -13,7 +13,7 @@ class EnterpriseComponent extends React.Component {
   /**
    * Build JSX for fax information
    */
-  build_faxes() {
+  buildFaxes() {
     const { t } = this.props;
 
     var enterprise = this.props.enterprise,
@@ -47,7 +47,7 @@ class EnterpriseComponent extends React.Component {
   /**
    * Build JSX for offering
    */
-  build_offering() {
+  buildOffering() {
     const { t } = this.props;
 
     var enterprise = this.props.enterprise,
@@ -69,7 +69,7 @@ class EnterpriseComponent extends React.Component {
   /**
    * Build JSX for address information
    */
-  build_addresses() {
+  buildAddresses() {
     const { t } = this.props;
 
     var enterprise = this.props.enterprise,
@@ -103,7 +103,7 @@ class EnterpriseComponent extends React.Component {
   /**
    * Build JSX for phone information
    */
-  build_phones() {
+  buildPhones() {
     const { t } = this.props;
 
     var enterprise = this.props.enterprise,
@@ -139,7 +139,7 @@ class EnterpriseComponent extends React.Component {
   /**
    * Build JSX for email information
    */
-  build_emails() {
+  buildEmails() {
     const { t } = this.props;
 
     var enterprise = this.props.enterprise,
@@ -175,7 +175,7 @@ class EnterpriseComponent extends React.Component {
   /**
    * Build JSX for purposes information
    */
-  build_purposes() {
+  buildPurposes() {
     const { t } = this.props;
 
     var enterprise = this.props.enterprise,
@@ -209,18 +209,18 @@ class EnterpriseComponent extends React.Component {
   /**
    * Build JSX for year started
    */
-  build_year() {
+  buildYear() {
     const { t } = this.props;
 
-    var year_started = this.props.enterprise.year_started,
+    var yearStarted = this.props.enterprise.year_started,
       jsx = null;
 
-    if (year_started) {
+    if (yearStarted) {
       jsx = (
         <div className="enterprise-extended__year-started">
           <h2>{t('enterprise:yearStarted')}</h2>
           <p>
-            {year_started}
+            {yearStarted}
           </p>
         </div>
       );
@@ -230,13 +230,13 @@ class EnterpriseComponent extends React.Component {
   }
 
   render() {
-    var emails = this.build_emails(),
-      phones = this.build_phones(),
-      purposes = this.build_purposes(),
-      addresses = this.build_addresses(),
-      faxes = this.build_faxes(),
-      offering = this.build_offering(),
-      year_started = this.build_year(),
+    var emails = this.buildEmails(),
+      phones = this.buildPhones(),
+      purposes = this.buildPurposes(),
+      addresses = this.buildAddresses(),
+      faxes = this.buildFaxes(),
+      offering = this.buildOffering(),
+      yearStarted = this.buildYear(),
       enterprise = this.props.enterprise;
 
     return (
@@ -257,7 +257,7 @@ class EnterpriseComponent extends React.Component {
 
             {faxes}
 
-            {year_started}
+            {yearStarted}
 
             <SocialMedia enterprise={enterprise} />
 

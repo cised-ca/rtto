@@ -13,13 +13,13 @@ class EnterpriseSummaryComponent extends React.Component {
     super(props);
 
     this.state = {
-      logo_error: false
+      logoError: false
     };
   }
 
   onError() {
     this.setState({
-      logo_error: true
+      logoError: true
     });
   }
 
@@ -27,23 +27,23 @@ class EnterpriseSummaryComponent extends React.Component {
     const { t } = this.props;
 
     var enterprise = this.props.enterprise,
-      enterprise_description = enterprise.short_description,
-      enterprise_logo = null,
-      enterprise_link = <Link to={'/enterprise/' + enterprise.id + '/' + slug(enterprise.name)}>{enterprise.name}</Link>,
-      more_info = (
+      enterpriseDescription = enterprise.short_description,
+      enterpriseLogo = null,
+      enterpriseLink = <Link to={'/enterprise/' + enterprise.id + '/' + slug(enterprise.name)}>{enterprise.name}</Link>,
+      moreInfo = (
           <div className="enterprise__website">
             <Link to={'/enterprise/' + enterprise.id}>{t('enterpriseSummary:moreInfo')}</Link>
           </div>
       );
 
     if (this.props.linkto === 'external') {
-      enterprise_link = <a href={enterprise.website}>{enterprise.name}</a>;
-      enterprise_description = enterprise.description;
-      more_info = null;
+      enterpriseLink = <a href={enterprise.website}>{enterprise.name}</a>;
+      enterpriseDescription = enterprise.description;
+      moreInfo = null;
     }
 
-    if (!this.state.logo_error) {
-      enterprise_logo = (
+    if (!this.state.logoError) {
+      enterpriseLogo = (
         <img onError={this.onError.bind(this)}
           src={this.context.config.api_root + '/enterprise/' + enterprise.id + '/logo'}
           alt={enterprise.name + ' logo'} title={enterprise.name + ' logo'} />
@@ -53,14 +53,14 @@ class EnterpriseSummaryComponent extends React.Component {
     return (
       <div className="enterprise-summary enterprisesummary-component">
         <div className="enterprise__logo">
-          {enterprise_logo}
+          {enterpriseLogo}
         </div>
         <div className="enterprise__details">
           <h2 className="enterprise__title">
-            {enterprise_link}
+            {enterpriseLink}
           </h2>
-          <div className="enterprise__description">{enterprise_description}</div>
-          {more_info}
+          <div className="enterprise__description">{enterpriseDescription}</div>
+          {moreInfo}
 
           {this.props.children}
         </div>

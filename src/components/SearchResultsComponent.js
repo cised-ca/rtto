@@ -42,14 +42,14 @@ class SearchResultsComponent extends React.Component {
       newSearchCoords = nextProps.searchCoords,
       currentSearchText = this.props.searchText,
       currentSearchCoords = this.props.searchCoords,
-      new_api_root = nextContext.config.api_root,
-      current_api_root = this.context.config.api_root;
+      newApiRoot = nextContext.config.api_root,
+      currentApiRoot = this.context.config.api_root;
 
     if (newSearchText || newSearchCoords) {
       if (newSearchText !== currentSearchText
           || newSearchCoords !== currentSearchCoords
-          || new_api_root !== current_api_root) {
-        this.search(new_api_root, newSearchText, newLocationText, newSearchCoords);
+          || newApiRoot !== currentApiRoot) {
+        this.search(newApiRoot, newSearchText, newLocationText, newSearchCoords);
       }
     }
   }
@@ -70,11 +70,11 @@ class SearchResultsComponent extends React.Component {
   /**
    * Fetch the search results from backend
    */
-  search(api_root, searchText, searchLocationText, coords, page) {
+  search(apiRoot, searchText, searchLocationText, coords, page) {
     var component = this,
       endpoint;
 
-    if (!api_root) {
+    if (!apiRoot) {
       return (<Loading />);
     }
 
@@ -83,7 +83,7 @@ class SearchResultsComponent extends React.Component {
       page = 1;
     }
 
-    endpoint = api_root + '/directory?page=' + page + '&offset=0';
+    endpoint = apiRoot + '/directory?page=' + page + '&offset=0';
     if (searchText) {
       endpoint += '&q=' + searchText;
     }
@@ -119,8 +119,8 @@ class SearchResultsComponent extends React.Component {
       results = component.state.searchResults,
       enterprises = [],
       pagination = null,
-      initial_page,
-      page_title = null,
+      initialPage,
+      pageTitle = null,
       map = [];
 
     // We haven't received results from the backend yet
@@ -132,7 +132,7 @@ class SearchResultsComponent extends React.Component {
       );
     }
 
-    initial_page = this.state.searchResults.page - 1;
+    initialPage = this.state.searchResults.page - 1;
     enterprises = results.enterprises;
 
     // If we have no results, show a "no results" message
@@ -169,8 +169,8 @@ class SearchResultsComponent extends React.Component {
       pagination = (
         <ReactPaginate breakClassName={'break-me'}
                        pageCount={this.state.searchResults.pages}
-                       initialPage={initial_page}
-                       forcePage={initial_page}
+                       initialPage={initialPage}
+                       forcePage={initialPage}
                        disableInitialCallback={true}
                        marginPagesDisplayed={2}
                        pageRangeDisplayed={5}
@@ -181,12 +181,12 @@ class SearchResultsComponent extends React.Component {
     }
 
     if (this.props.searchText.trim()) {
-      page_title = <h2>Search Results for: "{this.props.searchText}"</h2>;
+      pageTitle = <h2>Search Results for: "{this.props.searchText}"</h2>;
     }
 
     return (
       <div className='searchresults-component container'>
-        {page_title}
+        {pageTitle}
 
         {map}
 
