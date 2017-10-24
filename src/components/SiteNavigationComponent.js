@@ -20,7 +20,7 @@ class SiteNavigationComponent extends React.Component {
     e.preventDefault();
 
     this.setState({
-      searchText: this.refs.searchTextInput.value,
+      searchText: this.refs.searchTextInput.value
     }, this.handleSearch);
   }
 
@@ -29,8 +29,6 @@ class SiteNavigationComponent extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
-
     var searchText = '';
 
     if (this.props.searchText) {

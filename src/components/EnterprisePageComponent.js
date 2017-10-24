@@ -27,11 +27,11 @@ class EnterprisePageComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
-    let new_api_root = nextContext.config.api_root,
-      current_api_root = this.context.config.api_root;
+    let newApiRoot = nextContext.config.api_root,
+      currentApiRoot = this.context.config.api_root;
 
-    if (new_api_root !== current_api_root) {
-      this.fetchEnterprise(new_api_root);
+    if (newApiRoot !== currentApiRoot) {
+      this.fetchEnterprise(newApiRoot);
     }
   }
 
