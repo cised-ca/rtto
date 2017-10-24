@@ -140,7 +140,7 @@ class HomepageComponent extends React.Component {
       apply = null;
 
     const { t } = this.props;
-console.log(this.state);
+
     if (this.state.searchText === null && this.state.searchLocationText === null) {
       intro = (
           <div>

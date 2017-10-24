@@ -14,6 +14,7 @@ import PrivacyPolicy from './PrivacyPolicyComponent.js';
 import WhatPage from './WhatPageComponent.js';
 import NearbyPage from './NearbyPageComponent.js';
 import GetInvolvedPage from './GetInvolvedPageComponent.js';
+import AboutPage from './AboutPageComponent.js';
 
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-97087495-1');
@@ -46,6 +47,7 @@ class AppComponent extends React.Component {
           <Route name='content-page' path='/what' component={WhatPage} />
           <Route name='content-page' path='/nearby' component={NearbyPage} />
           <Route name='content-page' path='/get-involved' component={GetInvolvedPage} />
+          <Route name='about' path='/about' component={AboutPage} />
           <Route path="*" component={NotFound} />
         </Route>
       </Router>

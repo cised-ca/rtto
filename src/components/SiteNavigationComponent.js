@@ -49,16 +49,19 @@ class SiteNavigationComponent extends React.Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <Link className="nav__link navbar-brand" to="/">Brand</Link>
+              <Link className="nav__link navbar-brand" to="/">
+                <span className="fa fa-home" aria-hidden="true"></span>
+                <span className="sr-only">Home</span>
+              </Link>
             </div>
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
                 <li className="active">
-                  <Link to="#">Link <span className="sr-only">(current)</span></Link>
+                  <Link to="/about">About</Link>
                 </li>
                 <li>
-                  <Link to="#">Link</Link>
+                  <a href="/admin">Admin</a>
                 </li>
               </ul>
               <form className="navbar-form navbar-right" onSubmit={this.handleSubmit.bind(this)}>
