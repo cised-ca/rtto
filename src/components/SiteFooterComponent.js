@@ -1,25 +1,31 @@
 'use strict';
 
 import React from 'react';
-
+import { Link } from 'react-router';
 import { translate } from 'react-i18next';
 
-class SiteNavigationComponent extends React.Component {
+class SiteFooterComponent extends React.Component {
   render() {
     return (
       <footer className="site__footer">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-4">
               <h2>Contact</h2>
 
               <p>
-                111 Wellington St,<br />
-                Ottawa, ON<br />
-                K1A 0A9
+                The Centre for Social Enterprise Development<br />
+                7 Bayview Road<br />
+                Ottawa, ON  K1Y 2C5<br />
+                <a href="mailto:team@csedottawa.ca">team@csedottawa.ca</a><br />
+                <a href="https://twitter.com/csedottawa">@csedottawa</a>
               </p>
+            </div>
 
-              <p>613-555-1212</p>
+            <div className="col-md-4">
+              <h2>Terms</h2>
+
+              <Link to="/privacy">Privacy policy</Link>
             </div>
           </div>
         </div>
@@ -28,8 +34,8 @@ class SiteNavigationComponent extends React.Component {
   }
 }
 
-SiteNavigationComponent.displayName = 'SiteNavigationComponent';
+SiteFooterComponent.displayName = 'SiteNavigationComponent';
 
-export { SiteNavigationComponent };
-export default translate('siteNavigation')(SiteNavigationComponent);
+export { SiteFooterComponent };
+export default translate('siteFooter')(SiteFooterComponent);
 
