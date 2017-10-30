@@ -17,28 +17,8 @@ a:hover {
   text-decoration: underline;
 }
 
-@font-face {
-  font-family: "Conv_helvetica-normal-58a368459c773";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/fonts/helvetica-normal-58a368459c773.eot");
-  src:
-    local("☺"),
-    url("/fonts/helvetica-normal-58a368459c773.woff") format("woff"),
-    url("/fonts/helvetica-normal-58a368459c773.ttf") format("truetype"),
-    url("/fonts/helvetica-normal-58a368459c773.svg") format("svg");
-}
-
-@font-face {
-  font-family: "helvetica-black";
-  font-weight: 400;
-  padding-top: 120px;
-  src: url("/fonts/helvetica-neue-lt-std-95-black-58a3671d40c1b.otf");
-}
-
 body {
   background: rgba(0, 0, 0, 0.97) url("/images/background.jpg") repeat-y scroll 0% 0% / 100% auto;
-  font-family: "Conv_helvetica-normal-58a368459c773", sans-serif;
   overflow-y: scroll;
 }
 
