@@ -121,11 +121,15 @@ a:hover {
 }
 
 .site__footer {
-  background: $secondary-color;
+  background: url("/images/line.gif") $secondary-color repeat-x;
   border-bottom: 40px solid $primary-color;
   color: #fff;
-  margin-top: 60px;
-  padding: 20px 10px;
+  padding: 0 10px 20px 10px;
+}
+
+.site__footer-in {
+  background: url("/images/logo.png") no-repeat center 30px;
+  padding-top: 170px;
 }
 
 /**
