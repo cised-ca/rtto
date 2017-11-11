@@ -142,7 +142,7 @@ class HomepageComponent extends React.Component {
                 <div className="col-md-3"></div>
                 <div className="col-md-6">
                   <div className="tint">
-                    <h1 className="splash__title">Rise to the Occasion</h1>
+                    <h1 className="splash__title">{t('homepage:title')}</h1>
 
                     <SearchForm onSearch={this.handleSearch.bind(this)} searchText={this.state.searchText} />
                   </div>

@@ -1,4 +1,7 @@
 {
   "noResults": "No results.",
-  "resultsNear": "Showing results near"
+  "resultsNear": "Showing results near",
+  "searchResults": "Search Results for",
+  "previous": "Previous",
+  "next": "Next"
 }

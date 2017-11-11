@@ -29,6 +29,8 @@ class SiteNavigationComponent extends React.Component {
   }
 
   render() {
+    const {t} = this.props;
+
     var searchText = '';
 
     if (this.props.searchText) {
@@ -49,25 +51,25 @@ class SiteNavigationComponent extends React.Component {
               </button>
               <Link className="nav__link navbar-brand" to="/">
                 <span className="fa fa-home" aria-hidden="true"></span>
-                <span className="sr-only">Home</span>
+                <span className="sr-only">{t('siteNavigation:home')}</span>
               </Link>
             </div>
 
             <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul className="nav navbar-nav">
                 <li className="active">
-                  <Link to="/about">About</Link>
+                  <Link to="/about">{t('siteNavigation:about')}</Link>
                 </li>
                 <li>
-                  <a href="/admin">Admin</a>
+                  <a href="/admin">{t('siteNavigation:admin')}</a>
                 </li>
               </ul>
               <form className="navbar-form navbar-right" onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-group">
-                  <input type="text" className="form-control query" placeholder="Search"
+                  <input type="text" className="form-control query" placeholder={t('siteNavigation:search')}
                     ref="searchTextInput" defaultValue={searchText} />
                 </div>
-                <button type="submit" className="btn btn-default search-form__button">Search</button>
+                <button type="submit" className="btn btn-default search-form__button">{t('siteNavigation:search')}</button>
               </form>
             </div>
           </div>

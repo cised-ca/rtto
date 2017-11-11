@@ -1,9 +1,9 @@
 {
-  "faxes": "FR: Faxes",
-  "offering": "FR: Offering",
-  "address": "FR: Address",
-  "phone": "FR: Phone",
-  "email": "FR: Email",
-  "purpose": "FR: Purpose",
-  "yearStarted": "FR: Year Started"
+  "faxes": "Télécopies",
+  "offering": "Offre",
+  "address": "Adresse",
+  "phone": "Téléphone",
+  "email": "Courriel",
+  "purpose": "Objectif",
+  "yearStarted": "Année commencée"
 }
