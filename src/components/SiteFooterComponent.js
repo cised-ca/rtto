@@ -28,6 +28,10 @@ class SiteFooterComponent extends React.Component {
 
                 <Link to="/privacy">Privacy policy</Link>
               </div>
+
+              <div className="col-md-4">
+                <img className="ontario_icon" src="/images/ontario.jpeg" alt="Province of Ontario" />
+              </div>
             </div>
           </div>
         </div>
@@ -40,4 +44,3 @@ SiteFooterComponent.displayName = 'SiteNavigationComponent';
 
 export { SiteFooterComponent };
 export default translate('siteFooter')(SiteFooterComponent);
-
