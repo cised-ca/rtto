@@ -17,6 +17,22 @@
   width: 100%;
 }
 
+.search-form__query_location {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 15px;
+  padding: 15px;
+  width: 100%;
+}
+
+.search-form__location_label {
+  font-size: 18px;
+  color: rgb(200,200,200);
+  background-color: rgba(77, 79, 83, 0.4);
+  height: 100%;
+  padding: 15px 0 15px 0;
+}
+
 .search-form__button,
 a.search-form__button:link,
 a.search-form__button:visited {
@@ -61,6 +77,16 @@ a.search-form__button:visited {
   background-color: $primary-color-dark;
 }
 
+.search-more-options-container {
+  margin-top: 15px;
+}
+.search-more-options-button {
+    color: rgb(200,200,200);
+    font-size: 16px;
+    background-color: rgba(77, 79, 83, 0.4);
+    padding: 5px;
+}
+
 /**
  * Mobile (smaller than iPad)
  */
@@ -87,4 +113,3 @@ a.search-form__button:visited {
     }
   }
 }
-

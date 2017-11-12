@@ -161,9 +161,9 @@ class SearchResultsComponent extends React.Component {
     } else {
       if (this.state.searchLocationText) {
         map.push(
-          <p key='results near label'>
+          <h2 key='results near label'>
             {t('searchResults:resultsNear')} "{this.state.searchLocationText}":
-          </p>
+          </h2>
         );
       }
       map.push(<SearchResultsMap key='mapComponent'
@@ -198,7 +198,7 @@ class SearchResultsComponent extends React.Component {
       );
     }
 
-    if (this.props.searchText.trim()) {
+    if (this.props.searchText && this.props.searchText.trim()) {
       pageTitle = <h2>{t('searchResults:searchResults')}: "{this.props.searchText}"</h2>;
     }
 

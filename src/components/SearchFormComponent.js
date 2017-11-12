@@ -17,7 +17,8 @@ class SearchFormComponent extends React.Component {
     this.state = {
       locationDisambiguation: null,
       searchText: null,
-      searchLocationText: null
+      searchLocationText: null,
+      moreOptionsExpanded: false
     };
   }
 
@@ -26,7 +27,9 @@ class SearchFormComponent extends React.Component {
   }
 
   componentWillReceiveProps() {
-    this.reset();
+    if (!this.state.locationDisambiguation) {
+      this.reset();
+    }
   }
 
   reset() {
@@ -37,12 +40,23 @@ class SearchFormComponent extends React.Component {
     });
   }
 
+  toggleMoreOptions(e) {
+    e.preventDefault();
+    this.setState({
+      moreOptionsExpanded: !this.state.moreOptionsExpanded
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
+    let searchLocationText = '';
+    if (this.refs.searchLocationInput) {
+      searchLocationText = this.refs.searchLocationInput.value;
+    }
     this.setState({
       searchText: this.refs.searchTextInput.value,
-      searchLocationText: this.refs.searchLocationInput.value
+      searchLocationText: searchLocationText
     }, this.handleSearch);
   }
 
@@ -146,9 +160,90 @@ class SearchFormComponent extends React.Component {
     this.setState({locationDisambiguation: results});
   }
 
-  render() {
+  buildMoreOptionsButton() {
     const { t } = this.props;
+    let moreOptions = (
+      <div className="search-more-options-container" >
+        <a className="search-more-options-button" onClick={this.toggleMoreOptions.bind(this) }>
+          + {t('searchForm:moreOptions')}
+        </a>
+      </div>
+    );
+    if (this.state.moreOptionsExpanded) {
+      moreOptions = (
+        <div className="search-more-options-container">
+          <a className="search-more-options-button" onClick={this.toggleMoreOptions.bind(this) }>
+            - {t('searchForm:lessOptions')}
+          </a>
+        </div>
+      );
+    }
+    return moreOptions;
+  }
 
+  buildSearchForm(moreOptions) {
+    const { t } = this.props;
+    let searchText = '';
+    if (this.props.searchText) {
+      searchText = this.props.searchText;
+    }
+
+    let searchLocation = this.props.searchLocation || '';
+    if (this.state.moreOptionsExpanded) {
+      return (
+        <div>
+          <form className="search-form searchform-component" onSubmit={this.handleSubmit.bind(this)}>
+
+            <input className="search-form__query"
+              placeholder={t('searchForm:findSocialEnterprises')} type="search"
+              ref="searchTextInput" defaultValue={searchText} />
+
+              <div className="row">
+                <div className="col-md-1"/>
+                <div className="col-md-2 search-form__location_label">
+                  {t('searchForm:near')}
+                </div>
+                <div className="col-md-9">
+                  <input className="search-form__query_location" name="at"
+                    placeholder={t('searchForm:townOrPostalCode')} type="search"
+                    ref="searchLocationInput" defaultValue={searchLocation} />
+                </div>
+              </div>
+
+            <input className="btn btn-default btn-lg search-form__button"
+              style={{marginRight: '10px'}} type="submit" value={t('searchForm:search')} />
+
+            <Link className="btn btn-default btn-lg search-form__button"
+              to="/directory">{t('searchForm:browse')}</Link>
+
+          </form>
+
+          {moreOptions}
+        </div>
+      );
+    }
+    return (
+      <div>
+        <form className="search-form searchform-component" onSubmit={this.handleSubmit.bind(this)}>
+
+          <input className="search-form__query"
+            placeholder={t('searchForm:findSocialEnterprises')} type="search"
+            ref="searchTextInput" defaultValue={searchText} />
+
+          <input className="btn btn-default btn-lg search-form__button"
+            style={{marginRight: '10px'}} type="submit" value={t('searchForm:search')} />
+
+          <Link className="btn btn-default btn-lg search-form__button"
+            to="/directory">{t('searchForm:browse')}</Link>
+
+        </form>
+
+        {moreOptions}
+      </div>
+    );
+  }
+
+  render() {
     if (!this.context.config.geo_api_root) {
       return (<Loading />);
     }
@@ -160,33 +255,10 @@ class SearchFormComponent extends React.Component {
       );
     }
 
-    var searchText = '';
+    let moreOptions = this.buildMoreOptionsButton();
+    let searchForm = this.buildSearchForm(moreOptions);
 
-    if (this.props.searchText) {
-      searchText = this.props.searchText;
-    }
-
-    let searchLocation = this.props.searchLocation || '';
-
-    return (
-      <form className="search-form searchform-component" onSubmit={this.handleSubmit.bind(this)}>
-
-        <input className="search-form__query"
-          placeholder={t('searchForm:findSocialEnterprises')} type="search"
-          ref="searchTextInput" defaultValue={searchText} />
-
-        <input className="search-location-field" name="at"
-          placeholder={t('searchForm:townOrPostalCode')} type="search"
-          ref="searchLocationInput" defaultValue={searchLocation} />
-
-        <input className="btn btn-default btn-lg search-form__button"
-          style={{marginRight: '10px'}} type="submit" value={t('searchForm:search')} />
-
-        <Link className="btn btn-default btn-lg search-form__button"
-          to="/directory">{t('searchForm:browse')}</Link>
-
-      </form>
-    );
+    return searchForm;
   }
 }
 

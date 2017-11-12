@@ -1,8 +1,10 @@
 {
  "startPurchasing": "Start Purchasing",
- "near": "Near:",
+ "near": "near",
  "townOrPostalCode": "Town / Postal code",
  "search": "Search",
  "browse": "Browse",
- "findSocialEnterprises": "Find social enterprises"
+ "findSocialEnterprises": "Find social enterprises",
+ "lessOptions": "less options",
+ "moreOptions": "more options"
 }
