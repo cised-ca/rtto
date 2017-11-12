@@ -29,10 +29,11 @@ class EnterpriseSummaryComponent extends React.Component {
     var enterprise = this.props.enterprise,
       enterpriseDescription = enterprise.short_description,
       enterpriseLogo = null,
-      enterpriseLink = <Link to={'/enterprise/' + enterprise.id + '/' + slug(enterprise.name)}>{enterprise.name}</Link>,
+      enterpriseRoute = '/enterprise/' + enterprise.id + '/' + slug(enterprise.name),
+      enterpriseLink = <Link to={enterpriseRoute}>{enterprise.name}</Link>,
       moreInfo = (
           <div className="enterprise__website">
-            <Link to={'/enterprise/' + enterprise.id}>{t('enterpriseSummary:moreInfo')}</Link>
+            <Link to={enterpriseRoute}>{t('enterpriseSummary:moreInfo')}</Link>
           </div>
       );
 
