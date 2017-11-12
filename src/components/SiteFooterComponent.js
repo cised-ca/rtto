@@ -31,6 +31,10 @@ class SiteFooterComponent extends React.Component {
                 <Link to="/privacy">{t('siteFooter:privacyPolicy')}</Link><br/>
 
                 {t('siteFooter:locationData')} <Link to='http://www.geonames.org/'>geonames.org</Link>
+
+
+                <h2>{t('siteFooter:languageTitle')}</h2>
+                <Link to={t('siteFooter:otherLanguageLink')}>{t('siteFooter:otherLanguage')}</Link><br/>
               </div>
 
             </div>

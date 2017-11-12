@@ -1,5 +1,8 @@
 {
  "terms": "Terms",
  "privacyPolicy": "Privacy policy",
- "locationData": "Location data by"
+ "locationData": "Location data by",
+ "languageTitle": "Language",
+ "otherLanguage": "Français",
+ "otherLanguageLink": "https://saisirloccasion.ca"
 }
