@@ -101,6 +101,7 @@ class SearchResultsComponent extends React.Component {
               searchCoords: coords,
               searchLocationText: searchLocationText
             });
+            window.scrollTo(0, 25);
           });
         }
 
