@@ -168,6 +168,8 @@ class SearchResultsComponent extends React.Component {
     if (this.state.searchResults.pages > 1) {
       pagination = (
         <ReactPaginate breakClassName={'break-me'}
+                       nextLabel={t('searchResults:next')}
+                       previousLabel={t('searchResults:previous')}
                        pageCount={this.state.searchResults.pages}
                        initialPage={initialPage}
                        forcePage={initialPage}
@@ -181,7 +183,7 @@ class SearchResultsComponent extends React.Component {
     }
 
     if (this.props.searchText.trim()) {
-      pageTitle = <h2>Search Results for: "{this.props.searchText}"</h2>;
+      pageTitle = <h2>{t('searchResults:searchResults')}: "{this.props.searchText}"</h2>;
     }
 
     return (

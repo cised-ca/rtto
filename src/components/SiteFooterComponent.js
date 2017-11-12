@@ -6,6 +6,8 @@ import { translate } from 'react-i18next';
 
 class SiteFooterComponent extends React.Component {
   render() {
+    const {t} = this.props;
+
     return (
       <footer className="site__footer">
         <div className="site__footer-in">
@@ -24,10 +26,17 @@ class SiteFooterComponent extends React.Component {
               </div>
 
               <div className="col-md-4">
-                <h2>Terms</h2>
+                <h2>{t('siteFooter:terms')}</h2>
 
-                <Link to="/privacy">Privacy policy</Link>
+                <Link to="/privacy">{t('siteFooter:privacyPolicy')}</Link><br/>
+
+                {t('siteFooter:locationData')} <Link to='http://www.geonames.org/'>geonames.org</Link>
+
+
+                <h2>{t('siteFooter:languageTitle')}</h2>
+                <Link to={t('siteFooter:otherLanguageLink')}>{t('siteFooter:otherLanguage')}</Link><br/>
               </div>
+
             </div>
           </div>
         </div>
@@ -40,4 +49,3 @@ SiteFooterComponent.displayName = 'SiteNavigationComponent';
 
 export { SiteFooterComponent };
 export default translate('siteFooter')(SiteFooterComponent);
-

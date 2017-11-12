@@ -1,7 +1,8 @@
 {
- "startPurchasing": "FR: Start Purchasing",
- "near": "FR: Near:",
- "townOrPostalCode": "FR: Town / Postal code",
- "search": "FR: Search",
- "browse": "FR: Browse"
+ "startPurchasing": "",
+ "near": "Proximité:",
+ "townOrPostalCode": "Ville / Code postal",
+ "search": "Rechercher",
+ "browse": "Parcourir",
+ "findSocialEnterprises": "Trouver des entreprises sociales"
 }
