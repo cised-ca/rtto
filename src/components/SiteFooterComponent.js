@@ -37,6 +37,10 @@ class SiteFooterComponent extends React.Component {
                 <Link to={t('siteFooter:otherLanguageLink')}>{t('siteFooter:otherLanguage')}</Link><br/>
               </div>
 
+              <div className="col-md-4">
+                <img className="ontario_icon" src="/images/ontario.jpeg" alt="Province of Ontario" />
+              </div>
+
             </div>
           </div>
         </div>
