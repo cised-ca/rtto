@@ -45,12 +45,26 @@ class SearchResultsComponent extends React.Component {
       newApiRoot = nextContext.config.api_root,
       currentApiRoot = this.context.config.api_root;
 
+    let doSearch = false;
+
+    if (!currentApiRoot && newApiRoot) {
+      // This part enables us to hit URLs directly in our browser like:
+      //    http://.../directory
+      // or http://.../?q=food
+      // and still kick off a search instead of being stuck "loading..."
+      doSearch = true;
+    }
+
     if (newSearchText || newSearchCoords) {
       if (newSearchText !== currentSearchText
           || newSearchCoords !== currentSearchCoords
           || newApiRoot !== currentApiRoot) {
-        this.search(newApiRoot, newSearchText, newLocationText, newSearchCoords);
+        doSearch = true;
       }
+    }
+
+    if (doSearch) {
+      this.search(newApiRoot, newSearchText, newLocationText, newSearchCoords);
     }
   }
 
