@@ -8,7 +8,7 @@ class InstagramComponent extends React.Component {
 
     return (
       <div className="instagram-component">
-        <a href={url}>
+        <a href={url} target="_blank">
           <img className="socialmedia__icon" src="/images/instagram.png" alt="" />
           <span className="socialmedia__name">instagram</span>
         </a>
