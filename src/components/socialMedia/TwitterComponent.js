@@ -8,7 +8,7 @@ class TwitterComponent extends React.Component {
 
     return (
       <div className="twitter-component">
-        <a href={url}>
+        <a href={url} target="_blank">
           <img className="socialmedia__icon" src="/images/twitter.png" alt="" />
           <span className="socialmedia__name">twitter</span>
         </a>

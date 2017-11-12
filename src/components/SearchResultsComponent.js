@@ -8,6 +8,7 @@ import Loading from './LoadingComponent';
 import ReactPaginate from 'react-paginate';
 
 import { translate } from 'react-i18next';
+import i18n from 'i18next';
 
 class SearchResultsComponent extends React.Component {
   /**
@@ -97,7 +98,7 @@ class SearchResultsComponent extends React.Component {
       page = 1;
     }
 
-    endpoint = apiRoot + '/directory?page=' + page + '&offset=0';
+    endpoint = apiRoot + '/directory?lang=' + i18n.language + '&page=' + page + '&offset=0';
     if (searchText) {
       endpoint += '&q=' + searchText;
     }

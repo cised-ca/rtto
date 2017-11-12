@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import i18n from 'i18next';
 
 import Enterprise from './EnterpriseComponent';
 import Loading from './LoadingComponent';
@@ -41,7 +42,7 @@ class EnterprisePageComponent extends React.Component {
     }
 
     let component = this,
-      url  = apiRoot + '/enterprise/' + this.props.params.id;
+      url  = apiRoot + '/enterprise/' + this.props.params.id + '?lang=' + i18n.language;
 
     fetch(url)
       .then(response => {
