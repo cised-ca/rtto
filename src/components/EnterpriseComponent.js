@@ -54,7 +54,7 @@ class EnterpriseComponent extends React.Component {
       offering = enterprise.offering,
       jsx = null;
 
-    if (offering.length > 0) {
+    if (offering && offering.length > 0) {
       jsx = (
         <div className="enterprise-extended__offering">
           <h2>{t('enterprise:offering')}</h2>

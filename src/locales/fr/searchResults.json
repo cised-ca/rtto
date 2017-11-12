@@ -1,4 +1,7 @@
 {
-  "noResults": "FR: No results.",
-  "resultsNear": "FR: Showing results near"
+  "noResults": "Aucun résultat trouvé",
+  "resultsNear": "Résultats à proximité de",
+  "searchResults": "Résultats pour",
+  "previous": "Précédent",
+  "next": "Suivant"
 }

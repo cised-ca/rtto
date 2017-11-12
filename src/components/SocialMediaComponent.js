@@ -41,8 +41,12 @@ class SocialMediaComponent extends React.Component {
     }
 
     if (enterprise.website) {
+      let link = enterprise.website;
+      if (!link.startsWith('http')) {
+        link = 'http://' + link;
+      }
       website = (
-        <a href={enterprise.website} target="_blank" rel="noopener">
+        <a href={link} target="_blank" rel="noopener">
           {t('socialMedia:website')}
         </a>
       );

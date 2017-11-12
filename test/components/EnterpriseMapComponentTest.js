@@ -20,7 +20,7 @@ describe('EnterpriseMapComponent', () => {
     'locations': {
       'type': 'MultiPoint',
       'coordinates': [
-        [45.425, -75.692]
+        [-75.692, 45.425]
       ]
     },
     'addresses': [],
@@ -48,8 +48,8 @@ describe('EnterpriseMapComponent', () => {
     'locations': {
       'type': 'MultiPoint',
       'coordinates': [
-        [45.425, -75.692],
-        [44.425, -74.692]
+        [-75.692, 45.425],
+        [-74.692, 44.425]
       ]
     },
     'addresses': [],

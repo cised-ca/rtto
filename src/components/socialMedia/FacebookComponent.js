@@ -8,7 +8,7 @@ class FacebookComponent extends React.Component {
 
     return (
       <div className="facebook-component">
-        <a href={url}>
+        <a href={url} target="_blank">
           <img className="socialmedia__icon" src="/images/facebook.png" alt="" />
           <span className="socialmedia__name">facebook</span>
         </a>

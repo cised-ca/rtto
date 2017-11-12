@@ -172,7 +172,7 @@ class SearchFormComponent extends React.Component {
       <form className="search-form searchform-component" onSubmit={this.handleSubmit.bind(this)}>
 
         <input className="search-form__query"
-          placeholder="Find social enterprises" type="search"
+          placeholder={t('searchForm:findSocialEnterprises')} type="search"
           ref="searchTextInput" defaultValue={searchText} />
 
         <input className="search-location-field" name="at"
@@ -180,10 +180,10 @@ class SearchFormComponent extends React.Component {
           ref="searchLocationInput" defaultValue={searchLocation} />
 
         <input className="btn btn-default btn-lg search-form__button"
-          style={{marginRight: '10px'}} type="submit" value="Search" />
+          style={{marginRight: '10px'}} type="submit" value={t('searchForm:search')} />
 
         <Link className="btn btn-default btn-lg search-form__button"
-          to="/directory">Browse</Link>
+          to="/directory">{t('searchForm:browse')}</Link>
 
       </form>
     );

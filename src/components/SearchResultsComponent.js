@@ -8,6 +8,7 @@ import Loading from './LoadingComponent';
 import ReactPaginate from 'react-paginate';
 
 import { translate } from 'react-i18next';
+import i18n from 'i18next';
 
 class SearchResultsComponent extends React.Component {
   /**
@@ -45,12 +46,26 @@ class SearchResultsComponent extends React.Component {
       newApiRoot = nextContext.config.api_root,
       currentApiRoot = this.context.config.api_root;
 
+    let doSearch = false;
+
+    if (!currentApiRoot && newApiRoot) {
+      // This part enables us to hit URLs directly in our browser like:
+      //    http://.../directory
+      // or http://.../?q=food
+      // and still kick off a search instead of being stuck "loading..."
+      doSearch = true;
+    }
+
     if (newSearchText || newSearchCoords) {
       if (newSearchText !== currentSearchText
           || newSearchCoords !== currentSearchCoords
           || newApiRoot !== currentApiRoot) {
-        this.search(newApiRoot, newSearchText, newLocationText, newSearchCoords);
+        doSearch = true;
       }
+    }
+
+    if (doSearch) {
+      this.search(newApiRoot, newSearchText, newLocationText, newSearchCoords);
     }
   }
 
@@ -83,7 +98,7 @@ class SearchResultsComponent extends React.Component {
       page = 1;
     }
 
-    endpoint = apiRoot + '/directory?page=' + page + '&offset=0';
+    endpoint = apiRoot + '/directory?lang=' + i18n.language + '&page=' + page + '&offset=0';
     if (searchText) {
       endpoint += '&q=' + searchText;
     }
@@ -101,6 +116,7 @@ class SearchResultsComponent extends React.Component {
               searchCoords: coords,
               searchLocationText: searchLocationText
             });
+            window.scrollTo(0, 25);
           });
         }
 
@@ -168,6 +184,8 @@ class SearchResultsComponent extends React.Component {
     if (this.state.searchResults.pages > 1) {
       pagination = (
         <ReactPaginate breakClassName={'break-me'}
+                       nextLabel={t('searchResults:next')}
+                       previousLabel={t('searchResults:previous')}
                        pageCount={this.state.searchResults.pages}
                        initialPage={initialPage}
                        forcePage={initialPage}
@@ -181,7 +199,7 @@ class SearchResultsComponent extends React.Component {
     }
 
     if (this.props.searchText.trim()) {
-      pageTitle = <h2>Search Results for: "{this.props.searchText}"</h2>;
+      pageTitle = <h2>{t('searchResults:searchResults')}: "{this.props.searchText}"</h2>;
     }
 
     return (
