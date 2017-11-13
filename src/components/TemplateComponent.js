@@ -156,6 +156,7 @@ class TemplateComponent extends React.Component {
         }
 
         i18n.changeLanguage(currentLocale);
+        config.currentLocale = currentLocale;
 
         app.setState(
           {
@@ -171,10 +172,11 @@ class TemplateComponent extends React.Component {
 
   render() {
     /* Copy state information from this component to the child component's properties */
-    var childWithProps = React.cloneElement(this.props.children, this.state);
+    var childWithProps = React.cloneElement(this.props.children, this.state),
+      currentLocale = this.state.config.currentLocale;
 
     return (
-      <div className='template-component'>
+      <div className='template-component' lang={currentLocale}>
         {/* Every page will have the navigation component */}
         <SiteNavigation onSearch={this.handleSearch.bind(this)} />
 
