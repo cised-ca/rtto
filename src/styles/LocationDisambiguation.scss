@@ -1,4 +1,17 @@
 .locationdisambiguation-component {
   color: white;
   text-align: left;
+
+  .location-name {
+    margin-bottom: 8px;
+  }
+
+  a {
+    &:link,
+    &:visited,
+    &.back {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
 }
