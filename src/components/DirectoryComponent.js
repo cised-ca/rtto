@@ -12,7 +12,7 @@ class DirectoryComponent extends React.Component {
         <div className="container">
           <Back />
 
-          <SearchResults searchText="" />
+          <SearchResults location={this.props.location} searchText="" />
         </div>
       </div>
     );

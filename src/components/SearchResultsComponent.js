@@ -5,6 +5,7 @@ import EnterpriseSummary from './EnterpriseSummaryComponent';
 import SearchResultsMap from './SearchResultsMapComponent';
 import Loading from './LoadingComponent';
 
+import { withRouter } from 'react-router';
 import ReactPaginate from 'react-paginate';
 
 import { translate } from 'react-i18next';
@@ -41,8 +42,10 @@ class SearchResultsComponent extends React.Component {
     let newSearchText = nextProps.searchText,
       newLocationText = nextProps.searchLocationText,
       newSearchCoords = nextProps.searchCoords,
+      newPageNumber = nextProps.location.query.page,
       currentSearchText = this.props.searchText,
       currentSearchCoords = this.props.searchCoords,
+      currentPageNumber = this.props.location.query.page,
       newApiRoot = nextContext.config.api_root,
       currentApiRoot = this.context.config.api_root;
 
@@ -56,6 +59,10 @@ class SearchResultsComponent extends React.Component {
       doSearch = true;
     }
 
+    if (newPageNumber !== currentPageNumber) {
+      doSearch = true;
+    }
+
     if (newSearchText || newSearchCoords) {
       if (newSearchText !== currentSearchText
           || newSearchCoords !== currentSearchCoords
@@ -65,7 +72,7 @@ class SearchResultsComponent extends React.Component {
     }
 
     if (doSearch) {
-      this.search(newApiRoot, newSearchText, newLocationText, newSearchCoords);
+      this.search(newApiRoot, newSearchText, newLocationText, newSearchCoords, newPageNumber);
     }
   }
 
@@ -77,9 +84,32 @@ class SearchResultsComponent extends React.Component {
     // We use 1-based index (start at page 1). Add "1" to whatever the library gives us
     var selected = data.selected + 1;
 
-    // Trigger the search with the current query and the newly selected page
-    this.search(this.context.config.api_root, this.state.searchText,
-      this.state.searchLocationText, this.state.searchCoords, selected);
+    var query = {};
+    var pathname = '/';
+
+    if (this.state.searchText) {
+      query.q = this.state.searchText;
+    }
+
+    if (this.state.searchCoords) {
+      query.at = this.state.searchCoords;
+    }
+
+    if (this.state.searchLocationText) {
+      query.near = this.state.searchLocationText;
+    }
+
+    query.page = selected;
+
+    if (this.props.location.pathname) {
+      pathname = this.props.location.pathname;
+    }
+
+    // Updating the URL will trigger a new search
+    this.props.router.push({
+      pathname: pathname,
+      query: query
+    });
   }
 
   /**
@@ -226,4 +256,4 @@ SearchResultsComponent.contextTypes = {
 };
 
 export { SearchResultsComponent };
-export default translate('searchResults')(SearchResultsComponent);
+export default translate('searchResults')(withRouter(SearchResultsComponent));

@@ -224,6 +224,7 @@ class HomepageComponent extends React.Component {
       searchResults = (
         <div className='page'>
           <SearchResults searchText={this.state.searchText}
+                         location={this.props.location}
                          searchLocationText={this.state.searchLocationText}
                          searchCoords={this.state.searchCoords}/>
         </div>
