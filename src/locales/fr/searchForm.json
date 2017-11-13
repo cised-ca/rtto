@@ -1,8 +1,10 @@
 {
  "startPurchasing": "",
- "near": "Proximité:",
+ "near": "auprès de",
  "townOrPostalCode": "Ville / Code postal",
  "search": "Rechercher",
  "browse": "Parcourir",
- "findSocialEnterprises": "Trouver des entreprises sociales"
+ "findSocialEnterprises": "Trouver des entreprises sociales",
+ "lessOptions": "moins d'options",
+ "moreOptions": "plus d'options"
 }
