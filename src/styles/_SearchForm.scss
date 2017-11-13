@@ -26,11 +26,12 @@
 }
 
 .search-form__location_label {
-  font-size: 18px;
-  color: rgb(200,200,200);
   background-color: rgba(77, 79, 83, 0.4);
+  color: rgb(200, 200, 200);
+  font-size: 18px;
   height: 100%;
-  padding: 15px 0 15px 0;
+  padding: 15px 0;
+  width: 100%;
 }
 
 .search-form__button,
@@ -80,11 +81,18 @@ a.search-form__button:visited {
 .search-more-options-container {
   margin-top: 15px;
 }
+
 .search-more-options-button {
-    color: rgb(200,200,200);
-    font-size: 16px;
-    background-color: rgba(77, 79, 83, 0.4);
-    padding: 5px;
+  background-color: rgba(77, 79, 83, 0.4);
+  color: rgb(200, 200, 200);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+
+  &:hover,
+  &:focus {
+    color: rgb(200, 200, 200);
+  }
 }
 
 /**

@@ -200,11 +200,13 @@ class SearchFormComponent extends React.Component {
 
               <div className="row">
                 <div className="col-md-1"/>
-                <div className="col-md-2 search-form__location_label">
-                  {t('searchForm:near')}
+                <div className="col-md-2">
+                  <label className="search-form__location_label" htmlFor="near">
+                    {t('searchForm:near')}
+                  </label>
                 </div>
                 <div className="col-md-9">
-                  <input className="search-form__query_location" name="at"
+                  <input className="search-form__query_location" id="near" name="at"
                     placeholder={t('searchForm:townOrPostalCode')} type="search"
                     ref="searchLocationInput" defaultValue={searchLocation} />
                 </div>
