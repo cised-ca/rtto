@@ -2,6 +2,12 @@
 
 import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Link } from 'react-router';
+
+import withContext from './withContext';
+
+var slug = require('slug/slug-browser');
+slug.defaults.mode = 'rfc3986';
 
 class SearchResultsMapComponent extends React.Component {
 
@@ -26,6 +32,10 @@ class SearchResultsMapComponent extends React.Component {
         </Map>
       </div>
     );
+  }
+
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
   }
 
   render() {
@@ -92,12 +102,17 @@ class SearchResultsMapComponent extends React.Component {
       if (!this.enterpriseHasCoords(enterprise)) {
         return;
       }
+
+      let enterpriseRoute = '/enterprise/' + enterprise.id + '/' + slug(enterprise.name);
+      let LinkWithContext = withContext(Link, this.context);
+
       enterprise.locations.coordinates.map(coordinates => {
         let latLng = [coordinates[1], coordinates[0]];
+
         jsx.push(
           <Marker key={enterprise.name + latLng.toString()} position={latLng}>
             <Popup>
-              <span>{enterprise.name}</span>
+              <span><LinkWithContext to={enterpriseRoute}>{enterprise.name}</LinkWithContext></span>
             </Popup>
           </Marker>
         );
