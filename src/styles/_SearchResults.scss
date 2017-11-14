@@ -16,3 +16,33 @@
   border: 0;
 }
 
+.searchresults-component {
+  .pagination-container {
+    text-align: center;
+
+    .selected a {
+      background-color: #eee;
+    }
+
+    .disabled a {
+      color: #777;
+
+      &:hover,
+      &:focus {
+        color: #777;
+        text-decoration: none;
+      }
+    }
+
+    a {
+      color: #ff5c3e;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: #ff5c3e;
+        text-decoration: underline;
+      }
+    }
+  }
+}
