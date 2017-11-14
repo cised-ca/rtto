@@ -213,7 +213,8 @@ class SearchResultsComponent extends React.Component {
     // Don't show pagination if we only have 1 page
     if (this.state.searchResults.pages > 1) {
       pagination = (
-        <ReactPaginate breakClassName={'break-me'}
+        <div className="pagination-container">
+          <ReactPaginate breakClassName={'break-me'}
                        nextLabel={t('searchResults:next')}
                        previousLabel={t('searchResults:previous')}
                        pageCount={this.state.searchResults.pages}
@@ -225,6 +226,7 @@ class SearchResultsComponent extends React.Component {
                        onPageChange={this.handlePageClick.bind(this)}
                        containerClassName={'pagination'}
                        subContainerClassName={'pages pagination'} />
+        </div>
       );
     }
 
