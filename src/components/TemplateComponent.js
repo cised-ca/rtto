@@ -7,6 +7,7 @@ import { withRouter } from 'react-router';
 import SiteNavigation from './SiteNavigationComponent';
 import SiteFooter from './SiteFooterComponent';
 import i18n from '../i18n';
+import { translate } from 'react-i18next';
 
 require('es6-promise/auto');
 
@@ -175,6 +176,9 @@ class TemplateComponent extends React.Component {
     var childWithProps = React.cloneElement(this.props.children, this.state),
       currentLocale = this.state.config.currentLocale;
 
+    const { t } = this.props;
+    document.title = t('common:siteTitle');
+
     return (
       <div className='template-component' lang={currentLocale}>
         {/* Every page will have the navigation component */}
@@ -199,4 +203,4 @@ TemplateComponent.childContextTypes = {
   'logger': React.PropTypes.object
 };
 
-export default withRouter(TemplateComponent);
+export default translate('common')(withRouter(TemplateComponent));
