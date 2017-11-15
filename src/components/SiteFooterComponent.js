@@ -34,7 +34,7 @@ class SiteFooterComponent extends React.Component {
 
 
                 <h2>{t('siteFooter:languageTitle')}</h2>
-                <Link to={t('siteFooter:otherLanguageLink')}>{t('siteFooter:otherLanguage')}</Link><br/>
+                <a href={t('siteFooter:otherLanguageLink')}>{t('siteFooter:otherLanguage')}</a><br/>
               </div>
 
               <div className="col-md-4">
