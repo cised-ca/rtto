@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import Leaflet from 'leaflet';
 
 class EnterpriseMapComponent extends React.Component {
 
@@ -49,6 +50,17 @@ class EnterpriseMapComponent extends React.Component {
 
   generatePopupMarkers(enterprise) {
     let jsx = [];
+
+    const image = new Leaflet.Icon({
+      iconUrl: require('../extlib/leaflet/images/marker-icon.png'),
+      shadowUrl: require('../extlib/leaflet/images/marker-shadow.png'),
+      iconSize: [25, 41],
+      shadowSize: [41, 41],
+      iconAnchor: [12, 41],
+      shadowAnchor: [12, 41],
+      popupAnchor: [0, -41]
+    });
+
     enterprise.locations.coordinates.map(coordinates => {
       let latLng = [coordinates[1], coordinates[0]];
       let coordsStr = latLng[0] + ',' + latLng[1];

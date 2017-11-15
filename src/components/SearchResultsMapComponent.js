@@ -4,6 +4,8 @@ import React from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Link } from 'react-router';
 
+import Leaflet from 'leaflet';
+
 import withContext from './withContext';
 
 var slug = require('slug/slug-browser');
@@ -98,6 +100,17 @@ class SearchResultsMapComponent extends React.Component {
 
   generatePopupMarkers(enterprises) {
     let jsx = [];
+
+    const image = new Leaflet.Icon({
+      iconUrl: require('../extlib/leaflet/images/marker-icon.png'),
+      shadowUrl: require('../extlib/leaflet/images/marker-shadow.png'),
+      iconSize: [25, 41],
+      shadowSize: [41, 41],
+      iconAnchor: [12, 41],
+      shadowAnchor: [12, 41],
+      popupAnchor: [0, -41]
+    });
+
     enterprises.map(enterprise => {
       if (!this.enterpriseHasCoords(enterprise)) {
         return;
@@ -110,7 +123,7 @@ class SearchResultsMapComponent extends React.Component {
         let latLng = [coordinates[1], coordinates[0]];
 
         jsx.push(
-          <Marker key={enterprise.name + latLng.toString()} position={latLng}>
+          <Marker key={enterprise.name + latLng.toString()} position={latLng} icon={image}>
             <Popup>
               <span><LinkWithContext to={enterpriseRoute}>{enterprise.name}</LinkWithContext></span>
             </Popup>
