@@ -65,7 +65,7 @@ class EnterpriseMapComponent extends React.Component {
       let latLng = [coordinates[1], coordinates[0]];
       let coordsStr = latLng[0] + ',' + latLng[1];
       jsx.push(
-        <Marker key={coordsStr} position={latLng}>
+        <Marker key={coordsStr} position={latLng} icon={image}>
           <Popup>
             <span>{enterprise.name}</span>
           </Popup>
