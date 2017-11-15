@@ -38,7 +38,8 @@ class SiteFooterComponent extends React.Component {
               </div>
 
               <div className="col-md-4">
-                <img className="ontario_icon" src="/images/ontario.jpeg" alt="Province of Ontario" />
+                <img className="ontario_icon" src="/images/ontario.jpeg" alt="Province of Ontario" /><br />
+                <p>{t('siteFooter:fundedBy')}</p>
               </div>
 
             </div>
