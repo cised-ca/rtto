@@ -142,7 +142,7 @@ class SearchFormComponent extends React.Component {
     // and that is a case we would want to disambiguate on.
     // But if they search "Kingston (Downtown)" don't disambiguate.
     let exactPlaceMatch = [];
-    if (locationTextString.includes('(')) {
+    if (locationTextString.indexOf('(') !== -1) {
       exactPlaceMatch = results.filter(location => {
         return location.placeName.toLowerCase().trim() === locationTextString.toLowerCase().trim();
       });
