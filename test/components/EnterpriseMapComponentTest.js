@@ -15,7 +15,7 @@ describe('EnterpriseMapComponent', () => {
     'name': 'ReStore',
     'description': 'The ReStores’ shelves are stocked with new and gently...',
     'logo': 'restore.png',
-    'offering': 'Bob Smith',
+    'offering': ['Bob Smith'],
     'website': 'http://google.com',
     'locations': {
       'type': 'MultiPoint',
@@ -32,7 +32,7 @@ describe('EnterpriseMapComponent', () => {
     'name': 'ReStore',
     'description': 'The ReStores’ shelves are stocked with new and gently...',
     'logo': 'restore.png',
-    'offering': 'Bob Smith',
+    'offering': ['Bob Smith'],
     'website': 'http://google.com',
     'addresses': [],
     'faxes': [],
@@ -43,7 +43,7 @@ describe('EnterpriseMapComponent', () => {
     'name': 'ReStore',
     'description': 'The ReStores’ shelves are stocked with new and gently...',
     'logo': 'restore.png',
-    'offering': 'Bob Smith',
+    'offering': ['Bob Smith'],
     'website': 'http://google.com',
     'locations': {
       'type': 'MultiPoint',

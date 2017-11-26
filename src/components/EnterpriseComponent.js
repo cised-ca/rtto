@@ -54,11 +54,39 @@ class EnterpriseComponent extends React.Component {
       offering = enterprise.offering,
       jsx = null;
 
-    if (offering && offering.length > 0) {
+    // If the offering is a string, add it directly.
+    if(typeof offering === 'string' || offering instanceof String) {
+      if (offering && offering.length > 0) {
+        jsx = (
+          <div className="enterprise-extended__offering">
+            <h2>{t('enterprise:offering')}</h2>
+            {offering}
+          </div>
+        );
+      }
+      return jsx;
+    }
+
+    // Otherwise, it's an array, add it as a list
+    jsx = [];
+
+    // Get all the offerings
+    offering.map(function(o, index) {
+      jsx.push(
+        <li key={index} className="enterprise-extended__offering">
+          {o}
+        </li>
+      );
+    });
+
+    // If we got at least one, wrap the <li> in a <ul></ul>
+    if (jsx.length > 0) {
       jsx = (
         <div className="enterprise-extended__offering">
           <h2>{t('enterprise:offering')}</h2>
-          {offering}
+          <ul className="enterprise-extended__offering-list">
+            {jsx}
+          </ul>
         </div>
       );
     }
