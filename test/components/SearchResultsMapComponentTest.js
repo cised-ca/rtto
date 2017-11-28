@@ -15,7 +15,7 @@ describe('SearchResultsMapComponent', () => {
     'name': 'ReStore',
     'description': 'The ReStores’ shelves are stocked with new and gently...',
     'logo': 'restore.png',
-    'offering': 'Bob Smith',
+    'offering': ['Bob Smith'],
     'website': 'http://google.com',
     'locations': {
       'type': 'MultiPoint',

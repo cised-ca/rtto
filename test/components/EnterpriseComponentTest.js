@@ -17,7 +17,7 @@ describe('EnterpriseComponent', () => {
       'used renovation supplies donated by homeowners and businesses. ' +
       'Everything is available to the public at deeply discounted prices.',
     'logo': 'restore.png',
-    'offering': 'Bob Smith',
+    'offering': ['Bob Smith'],
     'website': 'http://google.com',
     'locations': {
       'type': 'MultiPoint',
