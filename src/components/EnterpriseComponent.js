@@ -54,9 +54,13 @@ class EnterpriseComponent extends React.Component {
       offering = enterprise.offering,
       jsx = null;
 
+    if (!offering) {
+      return null;
+    }
+
     // If the offering is a string, add it directly.
     if(typeof offering === 'string' || offering instanceof String) {
-      if (offering && offering.length > 0) {
+      if (offering.length > 0) {
         jsx = (
           <div className="enterprise-extended__offering">
             <h2>{t('enterprise:offering')}</h2>
