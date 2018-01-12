@@ -27,10 +27,18 @@ class SearchResultsComponent extends React.Component {
    * Called by React after the initial render.
    */
   componentDidMount() {
+    let loc = this.props.location,
+      pageNumber;
+
+    if ( loc ) {
+      pageNumber = loc.query.page || 1;
+    }
+
     this.search(this.context.config.api_root,
                 this.props.searchText,
                 this.props.searchLocationText,
-                this.props.searchCoords);
+                this.props.searchCoords,
+                pageNumber);
   }
 
   /**
