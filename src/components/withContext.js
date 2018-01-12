@@ -13,7 +13,7 @@ function withContext(WrappedComponent, context){
     }
 
     render() {
-      return <WrappedComponent {...this.props} />
+      return (<WrappedComponent {...this.props} />);
     }
   }
 
