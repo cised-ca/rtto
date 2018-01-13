@@ -54,15 +54,22 @@ class SearchFormComponent extends React.Component {
     if (this.refs.searchLocationInput) {
       searchLocationText = this.refs.searchLocationInput.value;
     }
+
+    let searchPurpose = '';
+    if (this.refs.searchPurposeInput) {
+      searchPurpose = this.refs.searchPurposeInput.value;
+    }
+
     this.setState({
       searchText: this.refs.searchTextInput.value,
-      searchLocationText: searchLocationText
+      searchLocationText: searchLocationText,
+      searchPurpose: searchPurpose
     }, this.handleSearch);
   }
 
   handleSearch() {
     if (!this.state.searchLocationText) {
-      this.props.onSearch(this.state.searchText);
+      this.props.onSearch(this.state.searchText, this.state.searchPurpose);
       return;
     }
 
@@ -75,6 +82,7 @@ class SearchFormComponent extends React.Component {
     });
     this.props.onSearch(
       this.state.searchText,
+      this.state.searchPurpose,
       location.placeName,
       [location.longitude, location.latitude]
     );
@@ -181,6 +189,44 @@ class SearchFormComponent extends React.Component {
     return moreOptions;
   }
 
+  buildPurposeOptions() {
+    const { t } = this.props;
+    let searchPurpose = this.props.searchPurpose || '';
+    let purposeOptions = t('searchForm:purposeOptions', { returnObjects: true});
+    if (!purposeOptions) {
+      return;
+    }
+    return (
+      purposeOptions.map(x => {
+        if (x === searchPurpose) {
+          return (<option key={x} selected="selected">{x}</option>);
+        }
+        return (<option key={x}>{x}</option>);
+      })
+    );
+  }
+
+  buildPurposeSearchRow() {
+    const { t } = this.props;
+    let purposeOptions = this.buildPurposeOptions();
+    return (
+      <div className="row">
+        <div className="col-md-1"/>
+        <div className="col-md-2">
+          <label className="search-form__purpose_label" htmlFor="purpose">
+            {t('searchForm:purpose')}
+          </label>
+        </div>
+        <div className="col-md-9">
+          <select className="search-form__query_purpose" id="purpose" name="purpose" ref="searchPurposeInput">
+            <option value=""></option>
+            {purposeOptions}
+          </select>
+        </div>
+      </div>
+    );
+  }
+
   buildSearchForm(moreOptions) {
     const { t } = this.props;
     let searchText = '';
@@ -190,6 +236,7 @@ class SearchFormComponent extends React.Component {
 
     let searchLocation = this.props.searchLocation || '';
     if (this.state.moreOptionsExpanded) {
+      let purposeSearchRow = this.buildPurposeSearchRow();
       return (
         <div>
           <form className="search-form searchform-component" onSubmit={this.handleSubmit.bind(this)}>
@@ -211,6 +258,8 @@ class SearchFormComponent extends React.Component {
                     ref="searchLocationInput" defaultValue={searchLocation} />
                 </div>
               </div>
+
+              {purposeSearchRow}
 
             <input className="btn btn-default btn-lg search-form__button"
               style={{marginRight: '10px'}} type="submit" value={t('searchForm:search')} />

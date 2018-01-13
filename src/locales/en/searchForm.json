@@ -6,5 +6,16 @@
  "browse": "Browse",
  "findSocialEnterprises": "Find social enterprises",
  "lessOptions": "less options",
- "moreOptions": "more options"
+ "moreOptions": "more options",
+ "purpose": "impact area",
+ "purposeOptions": [
+   "Social Inclusion",
+   "Food Security & Hunger Alleviation",
+   "Arts & Culture",
+   "Environmental",
+   "Real Estate/Property Maintenance",
+   "Work Skills Training for New Canadians",
+   "Work Skills Training for Hard-to-Employ Individuals",
+   "Generate Income for a Parent Organization"
+ ]
 }

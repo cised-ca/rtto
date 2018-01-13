@@ -20,7 +20,8 @@ class HomepageComponent extends React.Component {
     let state = {
       'searchText': null,
       'searchLocationText': null,
-      'searchCoords': null
+      'searchCoords': null,
+      'searchPurpose': null
     };
 
     if (query.q) {
@@ -32,6 +33,9 @@ class HomepageComponent extends React.Component {
     if (query.near) {
       state.searchLocationText = query.near;
     }
+    if (query.purpose) {
+      state.searchPurpose = query.purpose;
+    }
 
     this.setState(state);
   }
@@ -40,17 +44,22 @@ class HomepageComponent extends React.Component {
    * Triggered when the search form is submitted
    *
    * @param {String} searchText The text in the search field input box
+   * @param {String} searchPurpose The selection from the purpose field input box (may be empty)
    * @param {String} searchLocationText The text in the search location input box
    */
-  handleSearch(searchText, searchLocationText, searchCoords) {
+  handleSearch(searchText, searchPurpose, searchLocationText, searchCoords) {
     let state = {
       'searchText': null,
+      'searchPurpose': null,
       'searchLocationText': null,
       'searchCoords': null
     };
 
     if (searchText) {
       state.searchText = searchText;
+    }
+    if (searchPurpose) {
+      state.searchPurpose = searchPurpose;
     }
     if (searchLocationText) {
       state.searchLocationText = searchLocationText;
@@ -59,7 +68,7 @@ class HomepageComponent extends React.Component {
       state.searchCoords = searchCoords[0] + ',' + searchCoords[1];
     }
 
-    if (!searchText && !searchLocationText && !searchCoords) {
+    if (!searchText && !searchPurpose && !searchLocationText && !searchCoords) {
       // There is no form data entered but they clicked search anyway.
       // Let's search for empty string.
       state.searchText = ' ';
@@ -74,6 +83,9 @@ class HomepageComponent extends React.Component {
     let query = {};
     if (this.state.searchText) {
       query.q = this.state.searchText;
+    }
+    if (this.state.searchPurpose) {
+      query.purpose = this.state.searchPurpose;
     }
     if (this.state.searchCoords) {
       query.at = this.state.searchCoords;
@@ -93,6 +105,11 @@ class HomepageComponent extends React.Component {
    * check if we still have a search query in the URL. If not, show the intro.
    */
   componentWillReceiveProps(nextProps) {
+    if (!nextProps.location.query.purpose) {
+      this.setState({
+        'searchPurpose': null
+      });
+    }
     if (this.props.location.search && !nextProps.location.search) {
       this.setState({
         'searchText': null,
@@ -121,7 +138,7 @@ class HomepageComponent extends React.Component {
       return false;
     }
 
-    if (this.state.searchText || this.state.searchLocationText) {
+    if (this.state.searchText || this.state.searchLocationText || this.state.searchPurpose) {
       return true;
     }
 
@@ -134,7 +151,9 @@ class HomepageComponent extends React.Component {
 
     const { t } = this.props;
 
-    if (this.state.searchText === null && this.state.searchLocationText === null) {
+    if (this.state.searchText === null &&
+      this.state.searchLocationText === null &&
+      this.state.searchPurpose === null) {
       intro = (
           <div>
             <div className="splash">
@@ -156,6 +175,7 @@ class HomepageComponent extends React.Component {
       searchResults = (
         <div className='page'>
           <SearchResults searchText={this.state.searchText}
+                         searchPurpose={this.state.searchPurpose}
                          location={this.props.location}
                          searchLocationText={this.state.searchLocationText}
                          searchCoords={this.state.searchCoords}/>

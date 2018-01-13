@@ -36,6 +36,7 @@ class SearchResultsComponent extends React.Component {
 
     this.search(this.context.config.api_root,
                 this.props.searchText,
+                this.props.searchPurpose,
                 this.props.searchLocationText,
                 this.props.searchCoords,
                 pageNumber);
@@ -48,10 +49,12 @@ class SearchResultsComponent extends React.Component {
    */
   componentWillReceiveProps(nextProps, nextContext) {
     let newSearchText = nextProps.searchText,
+      newSearchPurpose = nextProps.searchPurpose,
       newLocationText = nextProps.searchLocationText,
       newSearchCoords = nextProps.searchCoords,
       newPageNumber = nextProps.location.query.page,
       currentSearchText = this.props.searchText,
+      currentSearchPurpose = this.props.searchPurpose,
       currentSearchCoords = this.props.searchCoords,
       currentPageNumber = this.props.location.query.page,
       newApiRoot = nextContext.config.api_root,
@@ -71,8 +74,9 @@ class SearchResultsComponent extends React.Component {
       doSearch = true;
     }
 
-    if (newSearchText || newSearchCoords) {
+    if (newSearchText || newSearchCoords || newSearchPurpose) {
       if (newSearchText !== currentSearchText
+          || newSearchPurpose !== currentSearchPurpose
           || newSearchCoords !== currentSearchCoords
           || newApiRoot !== currentApiRoot) {
         doSearch = true;
@@ -80,7 +84,7 @@ class SearchResultsComponent extends React.Component {
     }
 
     if (doSearch) {
-      this.search(newApiRoot, newSearchText, newLocationText, newSearchCoords, newPageNumber);
+      this.search(newApiRoot, newSearchText, newSearchPurpose, newLocationText, newSearchCoords, newPageNumber);
     }
   }
 
@@ -97,6 +101,10 @@ class SearchResultsComponent extends React.Component {
 
     if (this.state.searchText) {
       query.q = this.state.searchText;
+    }
+
+    if (this.state.searchPurpose) {
+      query.purpose = this.state.searchPurpose;
     }
 
     if (this.state.searchCoords) {
@@ -123,7 +131,7 @@ class SearchResultsComponent extends React.Component {
   /**
    * Fetch the search results from backend
    */
-  search(apiRoot, searchText, searchLocationText, coords, page) {
+  search(apiRoot, searchText, searchPurpose, searchLocationText, coords, page) {
     var component = this,
       endpoint;
 
@@ -138,7 +146,10 @@ class SearchResultsComponent extends React.Component {
 
     endpoint = apiRoot + '/directory?lang=' + i18n.language + '&page=' + page + '&offset=0';
     if (searchText) {
-      endpoint += '&q=' + searchText;
+      endpoint += '&q=' + encodeURIComponent(searchText);
+    }
+    if (searchPurpose) {
+      endpoint += '&purpose=' + encodeURIComponent(searchPurpose);
     }
     if (coords) {
       endpoint += '&at=' + coords;
@@ -151,6 +162,7 @@ class SearchResultsComponent extends React.Component {
             component.setState({
               searchResults: json,
               searchText: searchText,
+              searchPurpose: searchPurpose,
               searchCoords: coords,
               searchLocationText: searchLocationText
             });

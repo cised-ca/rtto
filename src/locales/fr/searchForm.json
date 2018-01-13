@@ -6,5 +6,16 @@
  "browse": "Parcourir",
  "findSocialEnterprises": "Trouver des entreprises sociales",
  "lessOptions": "moins d'options",
- "moreOptions": "plus d'options"
+ "moreOptions": "plus d'options",
+ "purpose": "zone d'impact",
+ "purposeOptions": [
+   "lnclusion sociale",
+   "Sécurité alimentaire et la lutte contre la faim",
+   "Arts et Culture",
+   "Environnement",
+   "Immobilier/travaux d’entretien",
+   "Formation professionnelle pour les nouveaux canadiens",
+   "Formation professionnelle pour des individus marginalisés par le marché de l'emploi",
+   "Génèrer des revenus pour l’organisation mère"
+ ]
 }
