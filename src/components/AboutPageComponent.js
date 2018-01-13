@@ -18,7 +18,7 @@ class AboutPageComponent extends React.Component {
         <p>{t('about:aboutTheDirectoryBody')}</p>
 
         <h2>{t('about:whatIsSocialEnterpriseHeading')}</h2>
-        <p>{t('about:whatIsSocialEnterpriseBody')} <i>({t('about:province')})</i></p>
+        <p>{t('about:whatIsSocialEnterpriseBody')}</p>
 
         <h2>{t('about:whyHeading')}</h2>
         <p>{t('about:whyBody')}</p>

@@ -6,7 +6,7 @@
   "main": "",
   "scripts": {
     "clean": "rimraf dist/*",
-    "copy": "copyfiles -u 1 ./src/locales/**/* ./src/images/* ./src/extlib/**/* ./src/config.json ./src/index.html ./src/favicon.ico ./dist",
+    "copy": "copyfiles -u 1 ./src/fonts/* ./src/locales/**/* ./src/images/* ./src/extlib/**/* ./src/config.json ./src/index.html ./src/favicon.ico ./dist",
     "dist": "npm run copy && webpack --env=dist --bail",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint ./src",
@@ -57,7 +57,7 @@
     "karma-webpack": "^1.7.0",
     "minimist": "^1.2.0",
     "mocha": "^2.2.5",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.7.2",
     "null-loader": "^0.1.1",
     "opn": "^4.0.2",
     "phantomjs-prebuilt": "^2.0.0",
