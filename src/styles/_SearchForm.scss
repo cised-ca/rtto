@@ -25,7 +25,15 @@
   width: 100%;
 }
 
-.search-form__location_label {
+.search-form__query_purpose {
+  display: block;
+  font-size: 14px;
+  padding: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.search-form__location_label, .search-form__purpose_label {
   background-color: rgba(77, 79, 83, 0.7);
   color: rgb(200, 200, 200);
   font-size: 18px;
