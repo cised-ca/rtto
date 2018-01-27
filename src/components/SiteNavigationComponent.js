@@ -60,9 +60,6 @@ class SiteNavigationComponent extends React.Component {
                 <li className="active">
                   <Link to="/about">{t('siteNavigation:about')}</Link>
                 </li>
-                <li>
-                  <a href="/admin">{t('siteNavigation:admin')}</a>
-                </li>
               </ul>
               <form className="navbar-form navbar-right" onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-group">
