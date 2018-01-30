@@ -11,5 +11,6 @@
   "privacyPolicy": "FR: Privacy policy",
   "locationData": "FR: Location data by",
   "locationNotFound": "FR: Could not find a match for location or postal code",
-  "trySearchAgain": "FR: Please try searching again."
+  "trySearchAgain": "FR: Please try searching again.",
+  "splashLogoLink": "/images/logo-full-FR.png"
 }

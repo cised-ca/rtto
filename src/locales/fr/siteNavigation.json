@@ -2,5 +2,6 @@
  "home": "Page d’accueil",
  "about": "À propos",
  "admin": "Administration",
- "search": "Rechercher"
+ "search": "Rechercher",
+ "brochureLink": "/images/RTTO-FR-Brochure.pdf"
 }

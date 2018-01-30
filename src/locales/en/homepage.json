@@ -9,5 +9,6 @@
   "connectLinkText": "Connect",
   "connect": "with us for more info on social purchasing.",
   "locationNotFound": "Could not find a match for location or postal code",
-  "trySearchAgain": "Please try searching again."
+  "trySearchAgain": "Please try searching again.",
+  "splashLogoLink": "/images/logo-full-ENG.png"
 }
