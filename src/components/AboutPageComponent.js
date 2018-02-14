@@ -54,6 +54,7 @@ class AboutPageComponent extends React.Component {
 
           <li>
             <h4>Social Purchasing Project</h4>
+            <p>{t('about:partnersSocialPurchasingProject')}</p>
           </li>
           </ul>
         </div>
