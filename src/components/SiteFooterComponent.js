@@ -11,7 +11,9 @@ class SiteFooterComponent extends React.Component {
     return (
       <footer className="site__footer">
         <div className="site__footer-in">
-          <div className="container">
+        </div>
+        <div className="site__footer-container">
+        <div className="container">
             <div className="row">
               <div className="col-md-4">
                 <h2>Contact</h2>
@@ -41,9 +43,8 @@ class SiteFooterComponent extends React.Component {
                 <img className="ontario_icon" src="/images/ontario.jpeg" alt="Province of Ontario" /><br />
                 <p>{t('siteFooter:fundedBy')}</p>
               </div>
-
+              </div>
             </div>
-          </div>
         </div>
       </footer>
     );
