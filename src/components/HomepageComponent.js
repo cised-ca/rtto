@@ -160,12 +160,12 @@ class HomepageComponent extends React.Component {
               <div className="row">
                 <div className="col-md-3"></div>
                 <div className="col-md-6">
-                  <div className="tint">
 
-                    <div className="splash__logo">
+                    <div className="splash__logo-container">
                       <img className="splash__logo" src={t('homepage:splashLogoLink')}/>
                     </div>
 
+                  <div className="tint">
                     <SearchForm onSearch={this.handleSearch.bind(this)} searchText={this.state.searchText} />
                   </div>
                 </div>

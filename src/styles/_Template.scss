@@ -89,8 +89,7 @@ a:hover {
 
 .tint {
   background: rgba(0, 0, 0, 0.9);
-  margin-top: 70px; /* TMP */
-  padding: 40px 20px;
+  padding: 30px 20px;
 }
 
 /* TMP */
@@ -121,14 +120,13 @@ a:hover {
 }
 
 .site__footer {
-  background: url("/images/line.gif") $secondary-color repeat-x;
+  background: $secondary-color;
   border-bottom: 40px solid $primary-color;
   color: #fff;
-  padding: 0 10px 20px;
 }
 
 .site__footer-in {
-  background: url("/images/logo.png") no-repeat center 30px;
+  background: url("/images/logo.png") no-repeat center 30px #fff;
   padding-top: 170px;
 }
 
@@ -136,13 +134,15 @@ a:hover {
   background-image: url("/images/logo-fra.png");
 }
 
+.site__footer-container {
+  background: url("/images/line.gif") $secondary-color repeat-x;
+  padding: 50px 10px 20px;
+}
+
 /**
  * Mobile (smaller than iPad)
  */
 @include tablet {
-  .tint {
-    margin-top: 20px;
-  }
 
   .page {
     border-radius: 0;
