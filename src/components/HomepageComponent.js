@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 
 import SearchForm from './SearchFormComponent.js';
 import SearchResults from './SearchResultsComponent.js';
+import KeyIndustries from './KeyIndustriesComponent.js';
 
 import { translate } from 'react-i18next';
 
@@ -110,6 +111,11 @@ class HomepageComponent extends React.Component {
         'searchPurpose': null
       });
     }
+    if (nextProps.location.query.q) {
+      this.setState({
+        'searchText': nextProps.location.query.q
+      });
+    }
     if (this.props.location.search && !nextProps.location.search) {
       this.setState({
         'searchText': null,
@@ -172,7 +178,15 @@ class HomepageComponent extends React.Component {
                 <div className="col-md-3"></div>
               </div>
             </div>
-          </div>
+
+            <div className="row">
+              <div className="col-md-3"/>
+              <div className="col-md-6">
+                <KeyIndustries/>
+              </div>
+              <div className="col-md-3"/>
+            </div>
+        </div>
       );
     } else if (this.shouldShowSearchResults()) {
       searchResults = (
