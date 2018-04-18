@@ -63,6 +63,9 @@ class SiteNavigationComponent extends React.Component {
                 <li className="active">
                   <a href={t('siteNavigation:brochureLink')}>Brochure</a>
                 </li>
+                <li className="active">
+                  <a href="https://goo.gl/forms/nfArxz3Iq3yMOSxp1">{t('siteNavigation:register')}</a>
+                </li>
               </ul>
               <form className="navbar-form navbar-right" onSubmit={this.handleSubmit.bind(this)}>
                 <div className="form-group">

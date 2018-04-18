@@ -25,6 +25,11 @@ class SiteFooterComponent extends React.Component {
                   <a href="mailto:team@csedottawa.ca">team@csedottawa.ca</a><br />
                   <a href="https://twitter.com/csedottawa">@csedottawa</a>
                 </p>
+
+                <h2>{t('siteFooter:register')}</h2>
+                <p>
+                  <a href="https://goo.gl/forms/nfArxz3Iq3yMOSxp1">{t('siteFooter:addYourEnterprise')}</a>
+                </p>
               </div>
 
               <div className="col-md-4">
